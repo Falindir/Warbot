@@ -52,7 +52,7 @@ class PyWarAgent(ScriptAgent):
 
 		def sendMessage(self, idAgent, message, content):
 			"""
-			Permet d'envoyer une message à une autre agent qui peut lire des messages
+			Permets d'envoyer un message à une autre agent qui peut lire des messages
 
 			idAgent -- int -- l'ID de l'agent qui oit reçevoir notre message
 			message -- String -- le titre de notre message
@@ -67,7 +67,7 @@ class PyWarAgent(ScriptAgent):
 
 		def broadcastMessageToAll(self, message, content):
 			"""
-			Permet d'envoyer une message à tout les agents qui peuvent lirenr des messages
+			Permets d'envoyer un message à tous les agents qui peuvent lirent des messages
 
 			message -- String -- le titre de notre message
 			content -- String -- le contenu de notre message
