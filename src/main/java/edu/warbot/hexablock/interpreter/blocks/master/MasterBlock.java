@@ -1,7 +1,10 @@
-package edu.warbot.hexablock.interpreter.blocks;
+package edu.warbot.hexablock.interpreter.blocks.master;
 
 import edu.warbot.brains.WarBrain;
 import edu.warbot.hexablock.interpreter.BlockAgent;
+import edu.warbot.hexablock.interpreter.blocks.ActionBlock;
+import edu.warbot.hexablock.interpreter.blocks.Block;
+import edu.warbot.hexablock.interpreter.blocks.TypeBlock;
 
 import java.util.LinkedList;
 
