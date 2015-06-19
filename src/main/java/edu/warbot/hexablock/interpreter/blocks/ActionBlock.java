@@ -1,5 +1,7 @@
 package edu.warbot.hexablock.interpreter.blocks;
 
+import edu.warbot.hexablock.interpreter.blocks.master.MasterBlock;
+
 /**
  * Created by jimmy on 29/05/15.
  */
@@ -35,5 +37,9 @@ public class ActionBlock extends Block {
 
     public Blocks getInstruction() {
         return instruction;
+    }
+
+    public String getAction() {
+        return null;
     }
 }

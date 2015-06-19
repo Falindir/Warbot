@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * Permet de représenter une liste de bloc, paramétré par un type
  * @param <T> : le type de bloc contenu dans la liste de bloc
  * @author Lopez Jimmy
- * @version 0.2
+ * @version 0.3
  */
 public class Blocks<T extends Block> extends Block {
 
@@ -61,5 +61,34 @@ public class Blocks<T extends Block> extends Block {
      */
     public void remove(T block) {
         blocks.remove(block);
+    }
+
+    /**
+     * Permet de récupérer un élément de la liste de bloc
+     * @param index : la position de l'élément choisie
+     * @return Un block
+     * @since 0.3
+     */
+    public T getElement(int index) {
+        return blocks.get(index);
+    }
+
+    /**
+     * Permet de savoir la taille de la liste de bloc
+     * @return Un int
+     * @since 0.3
+     */
+    public int size() {
+        return blocks.size();
+    }
+
+    /**
+     * Permet de savoir si la liste de bloc contient le bloc
+     * @param block : le bloc à savoir si présent dans la liste
+     * @return Un boolean
+     * @since 0.3
+     */
+    public boolean contains(T block) {
+        return blocks.contains(block);
     }
 }
