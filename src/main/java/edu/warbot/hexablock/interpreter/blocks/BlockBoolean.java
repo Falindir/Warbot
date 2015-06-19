@@ -1,13 +1,17 @@
 package edu.warbot.hexablock.interpreter.blocks;
 
 /**
- * Created by jimmy on 01/05/15.
+ * Classe qui permet de récupérer la valeur booléenne du bloc qui implémente cette interface
+ * @author Lopez Jimmy
+ * @version 0.1
  */
+
 public interface BlockBoolean {
 
+    /**
+     * Permet de récupérer la valeur booléenne du bloc
+     * @return Un boolean
+     * @since 0.1
+     */
     public boolean getValue();
-
-    public boolean isRealBooleanBlock();
-
-    public void setSituation(boolean value);
 }
