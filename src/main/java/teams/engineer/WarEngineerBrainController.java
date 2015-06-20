@@ -6,7 +6,7 @@ import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.brains.brains.WarEngineerBrain;
 import edu.warbot.communications.WarMessage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public abstract class WarEngineerBrainController extends WarEngineerBrain {
 
@@ -38,14 +38,15 @@ public abstract class WarEngineerBrainController extends WarEngineerBrain {
     public String action() {
 
         if (_idBase == 0) {
-            broadcastMessageToAll("Give me your ID base", "");
+//            broadcastMessageToAll("Give me your ID base", "");
         }
+
 
         if (getHealth() < WarEngineer.MAX_HEALTH && !isBagEmpty()) {
             return WarEngineer.ACTION_EAT;
         }
 
-        ArrayList<WarMessage> msgs = getMessages();
+        List<WarMessage> msgs = getMessages();
         for (WarMessage msg : msgs) {
             if (msg.getMessage().equals("I am the base and here is my ID")) {
                 String[] content = msg.getContent();
