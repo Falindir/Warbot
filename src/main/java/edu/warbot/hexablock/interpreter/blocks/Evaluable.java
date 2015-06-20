@@ -1,7 +1,15 @@
 package edu.warbot.hexablock.interpreter.blocks;
 
 /**
- * Created by jimmy on 30/04/15.
+ * Permet de rendre évaluable d'un objet
+ * @author Lopez Jimmy
+ * @version 0.2
  */
 public interface Evaluable {
+
+    /**
+     * Permet d'évaluer un objet qui implémente cette interface
+     * @return
+     */
+    public boolean eval();
 }

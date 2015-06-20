@@ -1,4 +1,4 @@
-package edu.warbot.hexablock.interpreter.blocks;
+package edu.warbot.hexablock.interpreter.blocks.type;
 
 /**
  * Created by jimmy on 30/04/15.
@@ -12,9 +12,11 @@ public enum TypeBlock {
     DOBLOCK,
     FUSIONBLOCK,
     NILBLOCK,
-    PERSONALIZEDBLOCK,
     WHENBLOCK,
     ENTITYBLOCK,
     NOTBLOCK,
-    ACTIONBLOCK
+    ACTIONBLOCK,
+    VIEWBLOCK,
+    MOVEACTIONBLOCK,
+    CREATEBLOCK
 }
