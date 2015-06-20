@@ -1,5 +1,8 @@
 package edu.warbot.hexablock.interpreter.blocks;
 
+import edu.warbot.hexablock.interpreter.BlockWrapper;
+import edu.warbot.hexablock.interpreter.blocks.type.TypeBlock;
+
 /**
  * Classe qui représente un bloc de manière générique (abstract)
  * @author Lopez Jimmy
@@ -15,9 +18,11 @@ public abstract class Block implements Evaluable {
      */
     private Block father;
 
+    private BlockWrapper<Object> wrapper;
+
     /**
      * Le type du bloc. Ce type ne peut être modifié.
-     * @see edu.warbot.hexablock.interpreter.blocks.TypeBlock
+     * @see edu.warbot.hexablock.interpreter.blocks.type.TypeBlock
      * @since 0.1
      */
     private TypeBlock type;
@@ -138,5 +143,18 @@ public abstract class Block implements Evaluable {
     public void setSameDepthDecremented(Block other) {
         setDepth(other.getDepth());
         decrementDepth();
+    }
+
+    @Override
+    public boolean eval() {
+        return false;
+    }
+
+    public Object getWrapper() {
+        return wrapper.get();
+    }
+
+    public void setWrapper(Object o){
+        wrapper.set(o);
     }
 }

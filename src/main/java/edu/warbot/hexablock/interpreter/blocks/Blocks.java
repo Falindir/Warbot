@@ -1,5 +1,7 @@
 package edu.warbot.hexablock.interpreter.blocks;
 
+import edu.warbot.hexablock.interpreter.blocks.type.TypeBlock;
+
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -90,5 +92,13 @@ public class Blocks<T extends Block> extends Block {
      */
     public boolean contains(T block) {
         return blocks.contains(block);
+    }
+
+    /**
+     * Permet de récupérer le dernier élément de la liste de bloc
+     * @return Un T
+     */
+    public T getLastElement() {
+        return blocks.getLast();
     }
 }

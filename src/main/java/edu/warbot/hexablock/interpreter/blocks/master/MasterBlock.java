@@ -1,12 +1,13 @@
 package edu.warbot.hexablock.interpreter.blocks.master;
 
 import edu.warbot.agents.actions.constants.IdlerActions;
+import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.brains.WarBrain;
 import edu.warbot.hexablock.interpreter.BlockAgent;
-import edu.warbot.hexablock.interpreter.blocks.ActionBlock;
+import edu.warbot.hexablock.interpreter.blocks.action.ActionBlock;
 import edu.warbot.hexablock.interpreter.blocks.Block;
 import edu.warbot.hexablock.interpreter.blocks.Blocks;
-import edu.warbot.hexablock.interpreter.blocks.TypeBlock;
+import edu.warbot.hexablock.interpreter.blocks.type.TypeBlock;
 
 /**
  * Classe qui représente un bloc de type maître
@@ -18,17 +19,10 @@ public class MasterBlock extends Block implements BlockAgent {
 
     /**
      * Le nom de l'agent que représente le bloc. Ne peut être modifié.
-     * @see java.lang.String
+     * @see edu.warbot.agents.enums.WarAgentType
      * @since 0.1
      */
-    private String name;
-
-    /**
-     * Le cerveau de l'agent Warbot. Peut être modifié.
-     * @see edu.warbot.brains.WarBrain
-     * @since 0.2
-     */
-    private WarBrain brain;
+    private WarAgentType type;
 
     /**
      * La liste des actions pour l'agent
@@ -38,23 +32,18 @@ public class MasterBlock extends Block implements BlockAgent {
     private Blocks<ActionBlock> listBlocks = new Blocks<ActionBlock>();
 
     /**
-     *
-     * @param name : le nom de l'agent
+     * Le constructeur du bloc
+     * @param type : le type de l'agent
      * @since 0.1
      */
-    public MasterBlock(String name) {
+    public MasterBlock(WarAgentType type) {
         super(TypeBlock.MASTERBLOCK);
-        this.name = name;
+        this.type = type;
         setDepth(0);
     }
 
-    /**
-     * Permet de récupérer le nom de l'agent
-     * @return Un String
-     * @since 0.1
-     */
-    public String getName(){
-        return name;
+    public WarAgentType getAgentType() {
+        return type;
     }
 
     /**
@@ -63,16 +52,7 @@ public class MasterBlock extends Block implements BlockAgent {
      * @since 0.2
      */
     public WarBrain getBrain() {
-        return brain;
-    }
-
-    /**
-     * Permet de modifier le cerveau de l'agent correspondant au bloc
-     * @param brain : le nouveau cerveau de l'agent
-     * @since 0.2
-     */
-    public void setBrain(WarBrain brain) {
-        this.brain = brain;
+        return (WarBrain) getWrapper();
     }
 
     /**
@@ -106,6 +86,6 @@ public class MasterBlock extends Block implements BlockAgent {
 
     @Override
     public void link(WarBrain brain) {
-        this.brain = brain;
+        setWrapper(brain);
     }
 }
