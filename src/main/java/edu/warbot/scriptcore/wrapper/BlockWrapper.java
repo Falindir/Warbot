@@ -1,6 +1,4 @@
-package edu.warbot.hexablock.interpreter;
-
-import org.python.core.PyObject;
+package edu.warbot.scriptcore.wrapper;
 
 /**
  * Created by jimmy on 19/06/15.

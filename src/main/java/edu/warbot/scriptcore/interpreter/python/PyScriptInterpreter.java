@@ -225,7 +225,7 @@ public class PyScriptInterpreter extends PythonInterpreter implements ScriptInte
     }
 
     @Override
-    public void addSCript(Script script, WarAgentType agent) {
+    public void addScript(Script script, WarAgentType agent) {
         PyScript pyScript = new PyScript(new StringBuilder());
         pyScript.addCodeToAgent(script);
         scripts.put(agent, pyScript);
