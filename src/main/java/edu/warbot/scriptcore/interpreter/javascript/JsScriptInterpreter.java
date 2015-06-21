@@ -118,7 +118,7 @@ public class JsScriptInterpreter implements ScriptInterpreter {
     }
 
     @Override
-    public void addSCript(Script script, WarAgentType agent) {
+    public void addScript(Script script, WarAgentType agent) {
         JsScript jsScript = new JsScript(new StringBuilder());
         jsScript.addCodeToAgent(script);
         scripts.put(agent, jsScript);

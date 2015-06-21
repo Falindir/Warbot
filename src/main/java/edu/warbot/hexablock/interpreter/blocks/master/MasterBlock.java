@@ -3,7 +3,7 @@ package edu.warbot.hexablock.interpreter.blocks.master;
 import edu.warbot.agents.actions.constants.IdlerActions;
 import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.brains.WarBrain;
-import edu.warbot.hexablock.interpreter.BlockAgent;
+import edu.warbot.scriptcore.scriptagent.BlockAgent;
 import edu.warbot.hexablock.interpreter.blocks.action.ActionBlock;
 import edu.warbot.hexablock.interpreter.blocks.Block;
 import edu.warbot.hexablock.interpreter.blocks.Blocks;

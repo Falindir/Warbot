@@ -16,7 +16,7 @@ public interface ScriptInterpreter {
 
     public void addScript(StringBuilder file, WarAgentType agent);
 
-    public void addSCript(Script script, WarAgentType agent);
+    public void addScript(Script script, WarAgentType agent);
 
     public Map<WarAgentType, Script> getScripts();
 

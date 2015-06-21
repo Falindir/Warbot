@@ -1,6 +1,6 @@
 package edu.warbot.hexablock.interpreter.blocks;
 
-import edu.warbot.hexablock.interpreter.BlockWrapper;
+import edu.warbot.scriptcore.wrapper.BlockWrapper;
 import edu.warbot.hexablock.interpreter.blocks.type.TypeBlock;
 
 /**
