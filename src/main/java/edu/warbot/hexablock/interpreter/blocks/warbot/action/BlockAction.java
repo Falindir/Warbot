@@ -8,8 +8,13 @@ import edu.warbot.hexablock.interpreter.blocks.type.TypeBlock;
  */
 public abstract class BlockAction extends Block {
 
-    public static String MOVE = "MOVE";
-    public static String IDLE = "IDLE";
+    public static String MOVE   = "MOVE";
+    public static String IDLE   = "IDLE";
+    public static String FIRE   = "FIRE";
+    public static String RELOAD = "RELOAD";
+    public static String TAKE   = "TAKE";
+    public static String EAT    = "EAT";
+    public static String GIVE   = "GIVE";
 
     /**
      * Constructeur d'un bloc
