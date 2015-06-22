@@ -58,5 +58,17 @@ public class WhenBlock extends Block {
         return last;
     }
 
+    public void add(Block block) {
+        if(!listBLock.contains(block)) {
+            listBLock.add(block);
+            block.setFather(this);
+            block.setSameDepthIncremented(this);
+        }
+    }
+
+    public void remove (Block block) {
+        if(listBLock.contains(block))
+            listBLock.remove(block);
+    }
 
 }

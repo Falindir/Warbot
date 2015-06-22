@@ -1,24 +1,33 @@
 package edu.warbot.scriptcore.interpreter.block;
 
 import edu.warbot.agents.enums.WarAgentType;
+import edu.warbot.hexablock.interpreter.blocks.Block;
+import edu.warbot.hexablock.interpreter.blocks.action.ActionBlock;
+import edu.warbot.hexablock.interpreter.blocks.condition.DoBlock;
 import edu.warbot.hexablock.interpreter.blocks.master.MasterBlock;
+import edu.warbot.hexablock.interpreter.blocks.warbot.NothingBlock;
+import edu.warbot.hexablock.interpreter.blocks.warbot.action.BlockAction;
+import edu.warbot.hexablock.interpreter.blocks.warbot.action.IdleActionBlock;
+import edu.warbot.hexablock.interpreter.blocks.warbot.action.MoveActionBlock;
+import edu.warbot.hexablock.interpreter.blocks.warbot.view.ViewBlock;
 import edu.warbot.scriptcore.interpreter.ScriptInterpreter;
 import edu.warbot.scriptcore.script.BlockScript;
 import edu.warbot.scriptcore.script.Script;
 import edu.warbot.scriptcore.scriptagent.ScriptAgent;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /**
  * Created by jimmy on 04/06/15.
  */
 public class BlockScriptInterpreter implements ScriptInterpreter {
+
+    protected SAXBuilder builder = new SAXBuilder();
 
     protected Map<WarAgentType, Script> scripts = new HashMap<>();
 
@@ -64,13 +73,74 @@ public class BlockScriptInterpreter implements ScriptInterpreter {
     @Override
     public ScriptAgent giveScriptAgent(WarAgentType agent) {
 
-        Script s = scripts.get(agent);
+        Script script = scripts.get(agent);
+        Document document = null;
+        MasterBlock master;
 
-        MasterBlock agentBlock = new MasterBlock(agent);
+        try {
+            document = createDocument(script);
+        } catch (JDOMException | IOException e) {
+                e.printStackTrace();
+        }
 
-        // TODO eval code
+        return createTreeBlock(document, agent);
+    }
 
-        return agentBlock;
+    public Document createDocument(Script script) throws JDOMException, IOException {
+        byte[] bytes = script.getCodeAgent().toString().getBytes();
+        InputStream inputStream = new ByteArrayInputStream(bytes);
+        return builder.build(inputStream);
+    }
+
+    public MasterBlock createTreeBlock(Document document, WarAgentType type) {
+
+        Element racine = document.getRootElement();
+
+        List<Element> listAction = racine.getChildren("actionUser");
+
+        MasterBlock master = new MasterBlock(type);
+
+        for (Element elementAction : listAction) {
+
+            ActionBlock action = new ActionBlock(master);
+
+            master.addBlocks(action);
+
+            List<Element> whenChild = elementAction.getChild("when").getChildren();
+
+            for(Element node : whenChild)
+                action.getWhenB().add(createBlock(action.getWhenB(), node));
+
+
+            List<Element> doChild = elementAction.getChild("do").getChildren();
+
+            for(Element node : doChild)
+                action.getDoB().add(createBlock(action.getDoB(), node));
+        }
+
+        return master;
+    }
+
+    public Block createBlock(Block father, Element element) {
+
+        switch (XmlBlock.valueOf(element.getName().toUpperCase()))
+        {
+            case VIEW:
+
+            case ACTION :
+
+                String s = element.getChildren().get(0).getName().toUpperCase();
+
+                if(s.equals(BlockAction.MOVE))
+                    return new MoveActionBlock((DoBlock) father);
+                else
+                    return new IdleActionBlock((DoBlock) father);
+
+            case CREATE:
+
+            default:
+                return new NothingBlock(father);
+        }
     }
 
     @Override
@@ -93,8 +163,6 @@ public class BlockScriptInterpreter implements ScriptInterpreter {
         WarAgentType type = WarAgentType.valueOf(agentName);
 
         MasterBlock agentBlock = new MasterBlock(type);
-
-        // TODO eval code
 
         return agentBlock;
     }
