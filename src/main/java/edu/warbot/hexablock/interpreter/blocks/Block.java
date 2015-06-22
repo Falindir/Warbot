@@ -155,6 +155,6 @@ public abstract class Block implements Evaluable {
     }
 
     public void setWrapper(Object o){
-        wrapper.set(o);
+        wrapper = new BlockWrapper<Object>(o);
     }
 }

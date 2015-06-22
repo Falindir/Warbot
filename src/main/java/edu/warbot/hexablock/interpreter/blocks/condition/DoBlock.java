@@ -37,16 +37,34 @@ public class DoBlock extends Block {
 
     public String getAction() {
 
-        for (int i = 0; i < listBLock.size(); i++)
-                listBLock.getElement(i).eval();
+        for (int i = 0; i < listBLock.size(); i++) {
+            listBLock.getElement(i).eval();
 
-        if (listBLock.getLastElement() instanceof BlockAction)
-            return ((BlockAction) listBLock.getLastElement()).getAction();
+            if (listBLock.getLastElement() instanceof BlockAction) {
 
-        if (listBLock.getLastElement() instanceof CreateBlock)
-            return ((CreateBlock) listBLock.getLastElement()).getAction();
+                return ((BlockAction) listBLock.getLastElement()).getAction();
+
+            }
+
+            if (listBLock.getLastElement() instanceof CreateBlock)
+                return ((CreateBlock) listBLock.getLastElement()).getAction();
+
+        }
 
         return null;
+    }
+
+    public void add(Block block) {
+        if(!listBLock.contains(block)) {
+            listBLock.add(block);
+            block.setFather(this);
+            block.setSameDepthIncremented(this);
+        }
+    }
+
+    public void remove (Block block) {
+        if(listBLock.contains(block))
+            listBLock.remove(block);
     }
 
 

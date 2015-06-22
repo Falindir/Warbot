@@ -1,0 +1,14 @@
+Name: HEXABLOCK_001
+IconPath: dekat.png
+SoundPath: dekat.wav
+Description: |
+    Equipe de block
+BrainsPackage: inGameTeams.hexablock_test001
+ScriptImplementation: block
+AgentsBrainClasses:
+    WarBase: WarBase.bk
+    WarExplorer: WarExplorer.bk
+    WarRocketLauncher: WarRocketLauncher.bk
+    WarKamikaze: WarKamikaze.bk
+    WarEngineer: WarEngineer.bk
+    WarTurret: WarTurret.bk

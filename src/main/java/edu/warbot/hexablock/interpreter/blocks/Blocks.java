@@ -34,11 +34,7 @@ public class Blocks<T extends Block> extends Block {
      * @since 0.2
      */
     public void add(T block) {
-        if(!blocks.contains(block)) {
-            Block o = blocks.getLast();
-            blocks.add(block);
-            block.setSameDepthIncremented(o);
-        }
+        blocks.add(block);
     }
 
     /**

@@ -8,6 +8,9 @@ import edu.warbot.hexablock.interpreter.blocks.type.TypeBlock;
  */
 public abstract class BlockAction extends Block {
 
+    public static String MOVE = "MOVE";
+    public static String IDLE = "IDLE";
+
     /**
      * Constructeur d'un bloc
      *
